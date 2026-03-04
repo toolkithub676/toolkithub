@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Color Picker - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input[type=color]{
+width:120px;
+height:60px;
+border:none;
+cursor:pointer;
+}
+
+.color-code{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Color Picker</h2>
+
+<p>Select a color</p>
+
+<input type="color" id="colorPicker" onchange="showColor()">
+
+<div class="color-code" id="colorCode">#000000</div>
+
+<button onclick="copyColor()">Copy Color Code</button>
+
+</div>
+
+<script>
+
+function showColor(){
+
+const color=document.getElementById("colorPicker").value;
+
+document.getElementById("colorCode").innerText=color;
+
+}
+
+function copyColor(){
+
+const color=document.getElementById("colorCode").innerText;
+
+navigator.clipboard.writeText(color);
+
+alert("Color code copied");
+
+}
+
+</script>
+
+</body>
+</html>

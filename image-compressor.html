@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+background:#f5f5f5;
+margin:0;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+max-width:500px;
+margin:auto;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+input{
+margin-top:10px;
+}
+
+img{
+max-width:100%;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Image Compressor</h2>
+<p>Upload image to compress</p>
+
+<input type="file" id="upload">
+
+<br>
+
+<button onclick="compressImage()">Compress</button>
+
+<br>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<img id="preview">
+
+<br>
+
+<a id="download"></a>
+
+</div>
+
+<script>
+
+function compressImage(){
+
+const file = document.getElementById("upload").files[0];
+
+if(!file){
+alert("Please upload an image");
+return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+const img = new Image();
+
+img.onload = function(){
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = img.width * 0.7;
+canvas.height = img.height * 0.7;
+
+ctx.drawImage(img,0,0,canvas.width,canvas.height);
+
+const compressed = canvas.toDataURL("image/jpeg",0.6);
+
+document.getElementById("preview").src = compressed;
+
+const link = document.getElementById("download");
+link.href = compressed;
+link.download = "compressed-image.jpg";
+link.innerText = "Download Image";
+
+};
+
+img.src = e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>

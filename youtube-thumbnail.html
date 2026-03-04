@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>YouTube Thumbnail Downloader - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:600px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:80%;
+padding:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+img{
+margin-top:20px;
+max-width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>YouTube Thumbnail Downloader</h2>
+
+<p>Paste YouTube video URL</p>
+
+<input type="text" id="url" placeholder="Enter YouTube link">
+
+<br>
+
+<button onclick="getThumbnail()">Get Thumbnail</button>
+
+<br>
+
+<img id="thumbnail">
+
+<br>
+
+<a id="download"></a>
+
+</div>
+
+<script>
+
+function getThumbnail(){
+
+var url=document.getElementById("url").value;
+
+var videoId="";
+
+if(url.includes("youtube.com")){
+videoId=url.split("v=")[1].split("&")[0];
+}
+
+if(url.includes("youtu.be")){
+videoId=url.split("/").pop();
+}
+
+if(videoId==""){
+alert("Invalid YouTube URL");
+return;
+}
+
+var thumbnail="https://img.youtube.com/vi/"+videoId+"/maxresdefault.jpg";
+
+document.getElementById("thumbnail").src=thumbnail;
+
+var link=document.getElementById("download");
+
+link.href=thumbnail;
+link.innerText="Download Thumbnail";
+link.download="thumbnail.jpg";
+
+}
+
+</script>
+
+</body>
+</html>

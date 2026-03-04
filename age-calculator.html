@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Age Calculator - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+font-size:20px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Age Calculator</h2>
+
+<p>Select your date of birth</p>
+
+<input type="date" id="dob">
+
+<br>
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+
+function calculateAge(){
+
+const dob=document.getElementById("dob").value;
+
+if(!dob){
+alert("Select your date of birth");
+return;
+}
+
+const birthDate=new Date(dob);
+
+const today=new Date();
+
+let years=today.getFullYear()-birthDate.getFullYear();
+
+let months=today.getMonth()-birthDate.getMonth();
+
+let days=today.getDate()-birthDate.getDate();
+
+if(days<0){
+months--;
+days+=30;
+}
+
+if(months<0){
+years--;
+months+=12;
+}
+
+document.getElementById("result").innerText=
+years+" Years "+months+" Months "+days+" Days";
+
+}
+
+</script>
+
+</body>
+</html>

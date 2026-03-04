@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Resizer - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:500px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+margin:10px;
+padding:8px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:5px;
+cursor:pointer;
+}
+
+img{
+max-width:100%;
+margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Image Resizer</h2>
+
+<input type="file" id="upload">
+
+<br>
+
+<input type="number" id="width" placeholder="Width">
+
+<input type="number" id="height" placeholder="Height">
+
+<br>
+
+<button onclick="resizeImage()">Resize Image</button>
+
+<br>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<img id="preview">
+
+<br>
+
+<a id="download"></a>
+
+</div>
+
+<script>
+
+function resizeImage(){
+
+const file=document.getElementById("upload").files[0];
+
+if(!file){
+alert("Upload image first");
+return;
+}
+
+const width=document.getElementById("width").value;
+const height=document.getElementById("height").value;
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const img=new Image();
+
+img.onload=function(){
+
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=width;
+canvas.height=height;
+
+ctx.drawImage(img,0,0,width,height);
+
+const resized=canvas.toDataURL("image/jpeg");
+
+document.getElementById("preview").src=resized;
+
+const link=document.getElementById("download");
+
+link.href=resized;
+link.download="resized-image.jpg";
+link.innerText="Download Image";
+
+};
+
+img.src=e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>

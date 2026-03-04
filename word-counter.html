@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Counter - ToolKitHub</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:600px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+textarea{
+width:100%;
+height:150px;
+padding:10px;
+margin-top:10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.result{
+margin-top:20px;
+font-size:18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Word Counter</h2>
+
+<p>Type or paste your text below</p>
+
+<textarea id="text" oninput="countWords()"></textarea>
+
+<div class="result">
+
+<p>Words: <span id="words">0</span></p>
+
+<p>Characters: <span id="characters">0</span></p>
+
+<p>Sentences: <span id="sentences">0</span></p>
+
+</div>
+
+</div>
+
+<script>
+
+function countWords(){
+
+var text=document.getElementById("text").value;
+
+var words=text.trim().split(/\s+/).filter(function(word){return word.length>0}).length;
+
+var characters=text.length;
+
+var sentences=text.split(/[.!?]+/).filter(function(s){return s.trim().length>0}).length;
+
+document.getElementById("words").innerText=words;
+
+document.getElementById("characters").innerText=characters;
+
+document.getElementById("sentences").innerText=sentences;
+
+}
+
+</script>
+
+</body>
+</html>
