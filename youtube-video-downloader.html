@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YouTube Video Downloader - ToolKitHub</title>
+
+<style>
+body{
+font-family:Arial;
+background:#f5f5f5;
+text-align:center;
+padding:40px;
+}
+
+.container{
+background:white;
+padding:30px;
+max-width:600px;
+margin:auto;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+input{
+width:80%;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+margin-top:10px;
+border-radius:5px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>YouTube Video Downloader</h2>
+
+<p>Paste YouTube video URL</p>
+
+<input id="url" placeholder="Enter YouTube link">
+
+<br><br>
+
+<button onclick="download()">Download</button>
+
+</div>
+
+<script>
+
+function download(){
+
+var url=document.getElementById("url").value;
+
+if(url==""){
+alert("Enter YouTube link");
+return;
+}
+
+window.location.href =
+"https://y2mate.is/en/youtube?url="+encodeURIComponent(url);
+
+}
+
+</script>
+
+</body>
+</html>
