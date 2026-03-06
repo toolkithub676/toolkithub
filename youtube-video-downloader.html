@@ -1,4 +1,47 @@
-<input id="url" placeholder="Paste YouTube link">
+<!DOCTYPE html>
+<html>
+<head>
+<title>YouTube Video Downloader - ToolKitHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body{
+font-family: Arial;
+text-align:center;
+background:#111;
+color:white;
+padding:40px;
+}
+
+input{
+width:80%;
+padding:12px;
+font-size:16px;
+border-radius:6px;
+border:none;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+font-size:18px;
+background:red;
+color:white;
+border:none;
+border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>ToolKitHub YouTube Downloader</h1>
+<p>Paste YouTube video link below</p>
+
+<input id="url" placeholder="Paste YouTube link here">
+
+<br>
 
 <button onclick="download()">Download</button>
 
@@ -6,12 +49,17 @@
 
 function download(){
 
-var link=document.getElementById("url").value;
+var url=document.getElementById("url").value;
 
-window.open(
-"https://toolkit-youtube-downloader--Toolkithub.replit.app/download?url="+encodeURIComponent(link)
-);
+var site="https://y2mate.is/en/youtube-downloader?q=";
+
+window.open(site+encodeURIComponent(url));
 
 }
 
 </script>
+
+<p style="margin-top:40px">Powered by SSAistudios</p>
+
+</body>
+</html>
