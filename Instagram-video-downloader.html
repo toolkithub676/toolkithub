@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Instagram Video Downloader - ToolKitHub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#111;
+color:white;
+padding:40px;
+}
+
+input{
+width:80%;
+padding:12px;
+font-size:16px;
+border-radius:6px;
+border:none;
+}
+
+button{
+margin-top:15px;
+padding:12px 25px;
+font-size:18px;
+background:#E1306C;
+color:white;
+border:none;
+border-radius:6px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Instagram Video Downloader</h1>
+<p>Paste Instagram video / reel link</p>
+
+<input id="url" placeholder="Paste Instagram link here">
+
+<br>
+
+<button onclick="download()">Download</button>
+
+<script>
+
+function download(){
+
+var url=document.getElementById("url").value;
+
+if(url==""){
+alert("Paste Instagram link");
+return;
+}
+
+// Working downloader redirect
+var site="https://snapinsta.app/?url=";
+
+window.open(site+encodeURIComponent(url));
+
+}
+
+</script>
+
+<p style="margin-top:40px">Powered by SSAistudios</p>
+
+</body>
+</html>
